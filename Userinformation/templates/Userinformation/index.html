@@ -1,0 +1,104 @@
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f2f2f2;
+    padding: 30px;
+  }
+
+  .container {
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 18px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+
+  .user-info {
+    flex: 1;
+  }
+
+  .action-buttons a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .action-buttons a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="container">
+  <h2>Add User</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input placeholder="Enter name" name="user_name" />
+    <input placeholder="Enter mail" name="user_mail" />
+    <input placeholder="Enter number" type="number" name="user_number" />
+    <button type="submit">ADD</button>
+  </form>
+
+  <ul>
+    {% for user in userinfo %}
+      <li>
+        <div class="user-info">
+          {{ user.user_name }} - {{ user.user_mail }} - {{ user.user_number }}
+        </div>
+        <div class="action-buttons">
+          <a href="/update/{{ user.id }}">Edit</a>
+          <a href="/delete/{{ user.id }}">Delete</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
