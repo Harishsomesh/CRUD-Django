@@ -42,14 +42,15 @@
 </style>
 
 <div class="form-container">
-  <h2>Add User</h2>
+  <h2>Edit User</h2>
   <form method="post" enctype="multipart/form-data">
+    
     {% csrf_token %}
+    <input type="text" name="user_name" placeholder="Enter name"  value="{{user.user_name}}" required  /> 
+    <input type="email" name="user_mail" placeholder="Enter mail" value="{{user.user_mail}}"   required/>
+    <input type="number" name="user_number" placeholder="Enter number" value="{{user.user_number}}"   required />
     
-    <input type="text" name="user_name" placeholder="Enter name" required />
-    <input type="email" name="user_mail" placeholder="Enter mail" required />
-    <input type="number" name="user_number" placeholder="Enter number" required />
-    
-    <button type="submit">Add</button>
+    <button type="submit">update</button>
+
   </form>
 </div>

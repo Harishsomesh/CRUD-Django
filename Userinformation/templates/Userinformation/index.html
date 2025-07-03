@@ -6,7 +6,7 @@
   }
 
   .container {
-    width: 400px;
+    width: 600px;
     margin: auto;
     background: #fff;
     padding: 25px 30px;
@@ -95,8 +95,8 @@
           {{ user.user_name }} - {{ user.user_mail }} - {{ user.user_number }}
         </div>
         <div class="action-buttons">
-          <a href="/update/{{ user.id }}">Edit</a>
-          <a href="/delete/{{ user.id }}">Delete</a>
+          <a href="{% url 'update' user.id %}">Edit</a>
+          <a href="{% url 'delete' user.id %}">Delete</a>
         </div>
       </li>
     {% endfor %}
